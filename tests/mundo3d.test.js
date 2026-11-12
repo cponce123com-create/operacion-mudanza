@@ -13,7 +13,7 @@ for(let pass=0;pass<4&&JSON.parse(db['mudanza-world3d-v1']).done.length<24;pass+
    element('area').children[ri].onclick();let button=element('items').children[oi];if(button.disabled)continue;let before=JSON.parse(db['mudanza-world3d-v1']).done.length;button.onclick();
    for(let i=0;i<400;i++){now+=50;let q=queue;queue=[];q.forEach(f=>f(now))}
    if(JSON.parse(db['mudanza-world3d-v1']).done.length===before&&element('panel').children[0]?.textContent==='No hay espacio en este camión'){
-    let send=element('panel').children.find(c=>c&&c.textContent==='Enviar y continuar');if(send)send.onclick();element('panel').replaceChildren();
+    let send=element('panel').children.find(c=>c&&c.textContent==='Enviar y continuar');if(send){send.onclick();for(let i=0;i<100;i++){now+=50;let q=queue;queue=[];q.forEach(f=>f(now))}}element('panel').replaceChildren();
    }
   }
  }
