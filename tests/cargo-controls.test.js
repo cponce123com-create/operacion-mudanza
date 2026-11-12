@@ -1,0 +1,10 @@
+const assert=require('node:assert/strict'),C=require('../app/src/main/assets/cargo-controls'),P=require('../app/src/main/assets/packing-3d');
+const item={x:0,y:0,z:0,w:.4,h:.4,d:.4,weight:10,stackable:true};
+assert.deepEqual(C.dragPosition(item,20,9.6,100),{...item,x:.2,z:0});
+assert.deepEqual(C.dragPosition(item,-20,9.6,100),{...item,x:0,z:.2});
+assert.throws(()=>C.dragPosition(item,1,1,0));
+let base={...item,w:1,d:1,h:.4},top={...item,x:0,y:.4,z:0,weight:5};
+assert.equal(C.validateLayout([base,top],base,{...base,x:1},P).ok,false,'evita dejar la carga superior sin apoyo');
+assert.equal(C.validateLayout([base,top],top,{...top,x:.2},P).ok,true);
+assert.equal(C.balance([],P.TRUCK).weight,0);assert.match(C.balance([item],P.TRUCK).advice,/ambos lados/);
+console.log('Arrastre: proyección, colisiones, soporte y distribución de peso correctos');

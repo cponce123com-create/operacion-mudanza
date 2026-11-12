@@ -12,7 +12,7 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
-      - run: node tests/truck-view.test.js && node tests/placement-rules.test.js && node tests/progress.test.js && node tests/dialogue.test.js && node tests/game-smoke.test.js && node tests/daily-smoke.test.js && node tests/full-game.test.js
+      - run: node tests/packing-3d.test.js && node tests/cargo-controls.test.js && node tests/routes-3d.test.js && node tests/mundo3d.test.js && node tests/truck-view.test.js && node tests/placement-rules.test.js && node tests/progress.test.js && node tests/dialogue.test.js && node tests/game-smoke.test.js && node tests/daily-smoke.test.js && node tests/full-game.test.js
       - run: gradle assembleDebug
       - uses: actions/upload-artifact@v4
         with:
