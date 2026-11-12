@@ -1,7 +1,7 @@
-# La mudanza de Anthonela — prototipo 0.1
+# Operación Mudanza — prototipo Android
 
-Juego de prueba para Android y navegador, sin conexión. Abre app/src/main/assets/index.html en un navegador para probarlo. En Android Studio, abre esta carpeta y ejecuta Build > Build APK(s); requiere Android SDK 35, Gradle 8.9 y acceso para descargar dependencias. La APK resultante es una versión de depuración.
+Juego sin conexión, en pantalla horizontal. Toca los objetos de la casa o usa «Objetos»; prepara las transportadoras y protege los platos. El camión se carga en orden de llegada: colocar un objeto pesado después de uno frágil puede dañarlo. Completa los 21 objetos para ver los resultados.
 
-También puede subirse este proyecto a GitHub; la acción «Compilar APK» genera un archivo descargable en Actions. No se incluye Gradle Wrapper. El proyecto no ha sido compilado ni probado en un dispositivo Android en este entorno.
+Esta versión incorpora dibujos pixelados creados en código y un personaje animado provisional; aún no utiliza los sprites definitivos del boceto de Anthonela. La selección y orden del camión son simplificados. La imagen aprobada es una referencia, no una reproducción exacta.
 
-Incluye 21 objetos, cinco áreas, movimiento, puntaje, objetos frágiles, organización simplificada del camión, transportadoras, gatos y resultados. El avatar y los objetos se representan con emojis provisionales, no con los sprites definitivos de Anthonela. Falta integrar ilustraciones y animaciones propias, interacción espacial del camión, niveles y pruebas en dispositivos.
+Para compilar en Android Studio, abre esta carpeta y ejecuta Build > Build APK(s), con Android SDK 35 y Gradle 8.9. GitHub Actions contiene el flujo «Compilar APK». Puede probarse en navegador abriendo app/src/main/assets/index.html. La compilación y ejecución en un teléfono deben verificarse en Android.
