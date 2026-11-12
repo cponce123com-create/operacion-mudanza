@@ -18,6 +18,7 @@ public class MainActivity extends Activity {
             View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         WebView game = new WebView(this);
         game.getSettings().setJavaScriptEnabled(true);
+        game.getSettings().setDomStorageEnabled(true);
         game.setWebViewClient(new WebViewClient());
         game.setWebChromeClient(new WebChromeClient() {
             @Override public boolean onJsConfirm(WebView view, String url, String message, JsResult result) {
