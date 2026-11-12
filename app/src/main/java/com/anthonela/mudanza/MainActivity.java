@@ -1,10 +1,13 @@
 package com.anthonela.mudanza;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.webkit.WebChromeClient;
+import android.webkit.JsResult;
 
 public class MainActivity extends Activity {
     @Override public void onCreate(Bundle state) {
@@ -16,6 +19,17 @@ public class MainActivity extends Activity {
         WebView game = new WebView(this);
         game.getSettings().setJavaScriptEnabled(true);
         game.setWebViewClient(new WebViewClient());
+        game.setWebChromeClient(new WebChromeClient() {
+            @Override public boolean onJsConfirm(WebView view, String url, String message, JsResult result) {
+                new AlertDialog.Builder(MainActivity.this)
+                    .setMessage(message)
+                    .setPositiveButton("Continuar", (dialog, which) -> result.confirm())
+                    .setNegativeButton("Cancelar", (dialog, which) -> result.cancel())
+                    .setOnCancelListener(dialog -> result.cancel())
+                    .show();
+                return true;
+            }
+        });
         setContentView(game);
         game.loadUrl("file:///android_asset/index.html");
     }
