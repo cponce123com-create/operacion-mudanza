@@ -1,0 +1,13 @@
+const assert=require('node:assert/strict');const P=require('../app/src/main/assets/packing-3d');
+const box=(w,h,d,weight=10,stackable=true,fragile=false)=>({w,h,d,weight,stackable,fragile});
+const base={...box(1,.5,1,20),x:0,y:0,z:0};
+assert.equal(P.validate([],box(3,1,1),{x:0,y:0,z:0}).ok,false);
+assert.equal(P.validate([base],box(1,1,1),{x:.2,y:0,z:0}).ok,false);
+assert.equal(P.validate([base],box(.5,.5,.5),{x:0,y:.5,z:0}).ok,true);
+assert.equal(P.validate([base],box(1.1,.5,1),{x:0,y:.5,z:0}).ok,false);
+assert.equal(P.validate([{...base,fragile:true}],box(.5,.5,.5),{x:0,y:.5,z:0}).ok,false);
+assert.equal(P.validate([base],box(.5,.5,.5,21),{x:0,y:.5,z:0}).ok,false);
+assert.equal(P.validate([],box(1,1,1,1501),{x:0,y:0,z:0}).ok,false);
+assert.deepEqual(P.findSpace([base],box(1,1,1)),{x:1,y:0,z:0});
+assert.equal(P.validate([],box(1,1,1),{x:NaN,y:0,z:0}).ok,false);
+console.log('Carga 3D: límites, peso, colisión, soporte y fragilidad correctos');
